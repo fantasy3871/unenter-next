@@ -6,23 +6,24 @@
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "next": "14.2.10",
-    "prettier": "^3.3.3",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3",
-    "prettier": "prettier --write .",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "cross-env": "^7.0.3",
     "eslint": "^8",
     "eslint-config-next": "14.2.10",
+    "husky": "^9.1.6",
     "postcss": "^8",
+    "prettier": "^3.3.3",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
