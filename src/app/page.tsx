@@ -2,7 +2,7 @@ import NoiseMap from '@/components/NoiseMap';
 
 export default function Home() {
   return (
-    <div className="">
+    <div className="h-screen">
       <NoiseMap />
     </div>
   );
