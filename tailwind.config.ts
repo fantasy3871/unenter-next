@@ -13,10 +13,22 @@ const config: Config = {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
+        subsurface: '#242120',
       },
     },
   },
   darkMode: 'class',
-  plugins: [nextui()],
+  plugins: [
+    nextui({
+      addCommonColors: true,
+      themes: {
+        light: {
+          colors: {
+            primary: '#6b615e',
+          },
+        },
+      },
+    }),
+  ],
 };
 export default config;
