@@ -14,11 +14,11 @@ const labels = [
 export default function Home() {
   return (
     <NoiseMapContext>
-      <div className="flex flex-col h-screen">
+      <div className="flex flex-col min-h-screen min-w-96">
         <div className="flex-grow p-3">
           <NoiseMap />
         </div>
-        <div className="flex px-10 py-5 gap-10">
+        <div className="flex flex-row flex-wrap gap-10 px-10 py-5">
           <Input
             color="primary"
             size="lg"
@@ -26,21 +26,19 @@ export default function Home() {
             labelPlacement="outside"
             variant="bordered"
             startContent={<></>}
-            className="min-w-32"
+            className="min-w-32 w-32 lg:w-64"
           />
-          {labels.map((label, i) => {
-            return (
-              <Input
-                key={`input ${i}`}
-                color="primary"
-                size="lg"
-                label={label}
-                labelPlacement="outside"
-                variant="bordered"
-                className="min-w-32"
-              />
-            );
-          })}
+          {labels.map((label, i) => (
+            <Input
+              key={`input ${i}`}
+              color="primary"
+              size="lg"
+              label={label}
+              labelPlacement="outside"
+              variant="bordered"
+              className="min-w-32 w-32 lg:w-64"
+            />
+          ))}
         </div>
       </div>
     </NoiseMapContext>
