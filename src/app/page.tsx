@@ -1,5 +1,5 @@
 import NoiseMap from '@/components/NoiseMap/noise-map';
-import NoiseMapContext from '@/contexts/noise-map';
+import NoiseMapProvider from '@/contexts/noise-map';
 import { Input } from '@nextui-org/react';
 
 const labels = [
@@ -13,7 +13,7 @@ const labels = [
 
 export default function Home() {
   return (
-    <NoiseMapContext>
+    <NoiseMapProvider>
       <div className="flex flex-col min-h-screen min-w-96">
         <div className="flex-grow p-3">
           <NoiseMap />
@@ -41,6 +41,6 @@ export default function Home() {
           ))}
         </div>
       </div>
-    </NoiseMapContext>
+    </NoiseMapProvider>
   );
 }
