@@ -1,5 +1,5 @@
 import NoiseMap from '@/components/NoiseMap/noise-map';
-import NoiseMapContext from '@/contexts/NoiseMap/noise-map';
+import NoiseMapContext from '@/contexts/noise-map';
 import { Input } from '@nextui-org/react';
 
 export default function Home() {
