@@ -14,14 +14,6 @@ export const DEFAULT_NOISE_MAP_DATA = {
   faunaSeed: '9dfb1994-64d8-46f6-a376-9d364d28c4d9',
 };
 
-export const TILE = {
-  STYLE: {
-    FLAT: 'Flat',
-    NOISE: 'Noise',
-    TERRAIN: 'Terrain',
-  },
-};
-
 export const DEFAULT_TERRAIN_LAYERS = [
   {
     name: 'Trench',
@@ -54,3 +46,11 @@ export const DEFAULT_TERRAIN_LAYERS = [
     color: '#5D5141',
   },
 ];
+
+export const TILE = {
+  STYLE: {
+    FLAT: 'Flat',
+    NOISE: 'Noise',
+    TERRAIN: 'Terrain',
+  },
+};
