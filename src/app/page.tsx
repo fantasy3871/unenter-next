@@ -15,6 +15,7 @@ export default function Home() {
           labelPlacement="outside"
           variant="bordered"
           startContent={<></>}
+          className="min-w-32"
         />
         <Input
           color="primary"
@@ -22,6 +23,7 @@ export default function Home() {
           label="Scale"
           labelPlacement="outside"
           variant="bordered"
+          className="min-w-32"
         />
         <Input
           color="primary"
@@ -29,6 +31,7 @@ export default function Home() {
           label="Style"
           labelPlacement="outside"
           variant="bordered"
+          className="min-w-32"
         />
         <Input
           color="primary"
@@ -36,6 +39,7 @@ export default function Home() {
           label="Frequency"
           labelPlacement="outside"
           variant="bordered"
+          className="min-w-32"
         />
         <Input
           color="primary"
@@ -43,6 +47,7 @@ export default function Home() {
           label="Lacunarity"
           labelPlacement="outside"
           variant="bordered"
+          className="min-w-32"
         />
         <Input
           color="primary"
@@ -50,6 +55,7 @@ export default function Home() {
           label="Octaves"
           labelPlacement="outside"
           variant="bordered"
+          className="min-w-32"
         />
         <Input
           color="primary"
@@ -57,6 +63,7 @@ export default function Home() {
           label="Persistence"
           labelPlacement="outside"
           variant="bordered"
+          className="min-w-32"
         />
       </div>
     </div>
