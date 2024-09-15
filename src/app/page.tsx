@@ -18,7 +18,7 @@ export default function Home() {
         <div className="flex-grow p-3">
           <NoiseMap />
         </div>
-        <div className="flex flex-row flex-wrap gap-10 px-10 py-5">
+        <div className="flex flex-row flex-wrap gap-3 md:gap-10 px-5 md:px-10 py-5">
           <Input
             color="primary"
             size="lg"
@@ -26,7 +26,7 @@ export default function Home() {
             labelPlacement="outside"
             variant="bordered"
             startContent={<></>}
-            className="min-w-32 w-32 lg:w-64"
+            className="min-w-16 w-16 md:w-32"
           />
           {labels.map((label, i) => (
             <Input
@@ -36,7 +36,7 @@ export default function Home() {
               label={label}
               labelPlacement="outside"
               variant="bordered"
-              className="min-w-32 w-32 lg:w-64"
+              className="min-w-16 w-16 md:w-32"
             />
           ))}
         </div>
