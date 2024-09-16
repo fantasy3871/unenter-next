@@ -10,7 +10,6 @@ export default function NoiseMap() {
     if (canvas) {
       const parent = canvas.parentElement;
       if (parent) {
-        // Set canvas size to match the parent div
         canvas.width = parent.clientWidth;
         canvas.height = parent.clientHeight;
       }
@@ -18,13 +17,8 @@ export default function NoiseMap() {
   };
 
   useEffect(() => {
-    // Set canvas size on mount
     resizeCanvas();
-
-    // Add event listener to resize canvas on window resize
     window.addEventListener('resize', resizeCanvas);
-
-    // Cleanup: Remove event listener on unmount
     return () => {
       window.removeEventListener('resize', resizeCanvas);
     };
