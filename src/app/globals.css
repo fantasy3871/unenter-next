@@ -5,6 +5,7 @@
 :root {
   --background: #242120;
   --foreground: #ffffff;
+  --nextui-content1: #242120;
 }
 
 @media (prefers-color-scheme: dark) {
