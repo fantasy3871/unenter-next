@@ -12,10 +12,13 @@
   },
   "dependencies": {
     "@nextui-org/react": "^2.4.6",
+    "alea": "^1.0.1",
     "framer-motion": "^11.5.4",
     "next": "14.2.10",
+    "pixi": "^0.3.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "simplex-noise": "^4.0.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
