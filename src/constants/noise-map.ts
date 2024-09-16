@@ -27,7 +27,7 @@ export const DEFAULT_TERRAIN_LAYERS = [
 
 // Tile style options
 export const TILE = {
-  STYLE: {
+  STYLES: {
     FLAT: 'Flat',
     NOISE: 'Noise',
     TERRAIN: 'Terrain',
@@ -37,7 +37,7 @@ export const TILE = {
 export const DEFAULT_NOISE_MAP_CONTEXT = {
   noiseMapData: DEFAULT_NOISE_MAP_DATA,
   terrainLayers: DEFAULT_TERRAIN_LAYERS,
-  tileStyle: TILE.STYLE.TERRAIN,
+  tileStyle: TILE.STYLES.TERRAIN,
   scale: '3',
   frequency: '0.01',
   lacunarity: '1.001',
