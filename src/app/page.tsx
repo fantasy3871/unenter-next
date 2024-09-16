@@ -1,8 +1,10 @@
 'use client';
 
+import { Input, Select, SelectItem } from '@nextui-org/react';
+
 import NoiseMap from '@/components/NoiseMap/noise-map';
+import { TILE } from '@/constants/noise-map';
 import NoiseMapProvider, { useNoiseMapContext } from '@/contexts/noise-map';
-import { Input } from '@nextui-org/react';
 
 export default function Home() {
   return (
@@ -68,16 +70,22 @@ const NoiseMapControls = () => {
         className="min-w-16 w-16 md:w-32"
         onChange={handleChange(setScale)}
       />
-      <Input
+      <Select
         color="primary"
-        value={tileStyle}
+        selectedKeys={[tileStyle]}
         size="lg"
         label="Style"
         labelPlacement="outside"
         variant="bordered"
         className="min-w-16 w-16 md:w-32"
-        onChange={handleChange(setTileStyle)}
-      />
+        onChange={(e) => setTileStyle(e.target.value)}
+      >
+        {Object.values(TILE.STYLES).map((style) => (
+          <SelectItem key={style} value={style}>
+            {style}
+          </SelectItem>
+        ))}
+      </Select>
       <Input
         color="primary"
         value={frequency}
