@@ -59,6 +59,7 @@ export default function NoiseMap() {
   };
 
   useEffect(() => {
+    console.log('here');
     const graphics = new Graphics();
     const stageContainer = new Container();
     const generateMap = (): void => {
@@ -113,22 +114,18 @@ export default function NoiseMap() {
         drawHex(hex, graphics, { fillColor });
       });
     };
-
-    resizeCanvas();
-
     // Initialize Pixi.js application only once
     if (canvasRef.current) {
       app.current = new Application();
       app.current.init({
-        view: canvasRef.current, // Pass the actual HTMLCanvasElement here
+        canvas: canvasRef.current, // Pass the actual HTMLCanvasElement here
         antialias: true,
         backgroundColor: 0x242120, // Replace background as a color hex value
         resizeTo: canvasRef.current.parentElement ?? undefined, // Resize according to its parent
       });
     }
 
-    stageContainer.x = 0;
-    stageContainer.y = 0;
+    resizeCanvas();
     generateMap();
 
     stageContainer.addChild(graphics);
