@@ -24,27 +24,27 @@ export type NoiseMapContextType = {
   setTerrainLayers: React.Dispatch<React.SetStateAction<TerrainLayer[]>>;
   tileStyle: string;
   setTileStyle: React.Dispatch<React.SetStateAction<string>>;
-  scale: string;
-  setScale: React.Dispatch<React.SetStateAction<string>>;
-  frequency: string;
-  setFrequency: React.Dispatch<React.SetStateAction<string>>;
-  lacunarity: string;
-  setLacunarity: React.Dispatch<React.SetStateAction<string>>;
-  octaves: string;
-  setOctaves: React.Dispatch<React.SetStateAction<string>>;
-  persistence: string;
-  setPersistence: React.Dispatch<React.SetStateAction<string>>;
+  scale: number;
+  setScale: React.Dispatch<React.SetStateAction<number>>;
+  frequency: number;
+  setFrequency: React.Dispatch<React.SetStateAction<number>>;
+  lacunarity: number;
+  setLacunarity: React.Dispatch<React.SetStateAction<number>>;
+  octaves: number;
+  setOctaves: React.Dispatch<React.SetStateAction<number>>;
+  persistence: number;
+  setPersistence: React.Dispatch<React.SetStateAction<number>>;
   tileSize: number;
   setTileSize: React.Dispatch<React.SetStateAction<number>>;
 };
 
 // Define the input type of createNoiseFunction
 export type NoiseOptions = {
-  amplitude?: number;
-  frequency?: number;
-  lacunarity?: number;
-  octaves?: number;
-  persistence?: number;
+  amplitude: number;
+  frequency: number;
+  lacunarity: number;
+  octaves: number;
+  persistence: number;
 };
 
 // Define the shape of NoiseMapProps for the provider component

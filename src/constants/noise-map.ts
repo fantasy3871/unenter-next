@@ -1,6 +1,7 @@
 import { Orientation } from 'honeycomb-grid';
 
 export const UUID_NIL = '00000000-0000-0000-0000-000000000000';
+export const COLOR_EMPTY = '#474544';
 
 // Default WorldData
 export const DEFAULT_WORLD_DATA = {
@@ -39,12 +40,14 @@ export const TILE = {
 
 export const DEFAULT_NOISE_MAP_CONTEXT = {
   worldData: DEFAULT_WORLD_DATA,
-  terrainLayers: DEFAULT_TERRAIN_LAYERS,
+  terrainLayers: DEFAULT_TERRAIN_LAYERS.slice().sort(
+    (a, b) => a.starts - b.starts
+  ),
   tileStyle: TILE.STYLES.TERRAIN,
-  scale: '3',
-  frequency: '0.01',
-  lacunarity: '1.001',
-  octaves: '4',
-  persistence: '0.5',
+  scale: 3,
+  frequency: 0.01,
+  lacunarity: 1.001,
+  octaves: 4,
+  persistence: 0.5,
   tileSize: 12,
 };
