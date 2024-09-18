@@ -46,6 +46,7 @@ const NoiseMapControls = () => {
   return (
     <div className="flex flex-row flex-wrap gap-3 md:gap-10 px-5 md:px-10 py-5">
       <Input
+        isDisabled
         color="primary"
         value={worldData.terrainSeed}
         size="lg"
