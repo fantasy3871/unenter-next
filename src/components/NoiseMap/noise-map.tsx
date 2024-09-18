@@ -1,5 +1,3 @@
-'use client';
-
 import { defineHex, Grid, Hex, Orientation, rectangle } from 'honeycomb-grid';
 import { Application, Container, Graphics } from 'pixi.js';
 import { useEffect, useRef } from 'react';
