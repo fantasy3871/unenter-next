@@ -59,7 +59,6 @@ export default function NoiseMap() {
   };
 
   useEffect(() => {
-    console.log('here');
     const graphics = new Graphics();
     const stageContainer = new Container();
     const generateMap = (): void => {
