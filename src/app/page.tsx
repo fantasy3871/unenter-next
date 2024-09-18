@@ -59,8 +59,9 @@ const NoiseMapControls = () => {
         }
       />
       <Input
+        type="number"
         color="primary"
-        value={scale}
+        value={scale.toString()}
         size="lg"
         label="Scale"
         labelPlacement="outside"
@@ -85,8 +86,9 @@ const NoiseMapControls = () => {
         ))}
       </Select>
       <Input
+        type="number"
         color="primary"
-        value={frequency}
+        value={frequency.toString()}
         size="lg"
         label="Frequency"
         labelPlacement="outside"
@@ -95,8 +97,9 @@ const NoiseMapControls = () => {
         onChange={handleChange(setFrequency)}
       />
       <Input
+        type="number"
         color="primary"
-        value={lacunarity}
+        value={lacunarity.toString()}
         size="lg"
         label="Lacunarity"
         labelPlacement="outside"
@@ -105,8 +108,9 @@ const NoiseMapControls = () => {
         onChange={handleChange(setLacunarity)}
       />
       <Input
+        type="number"
         color="primary"
-        value={octaves}
+        value={octaves.toString()}
         size="lg"
         label="Octaves"
         labelPlacement="outside"
@@ -115,8 +119,9 @@ const NoiseMapControls = () => {
         onChange={handleChange(setOctaves)}
       />
       <Input
+        type="number"
         color="primary"
-        value={persistence}
+        value={persistence.toString()}
         size="lg"
         label="Persistence"
         labelPlacement="outside"
