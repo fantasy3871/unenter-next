@@ -21,8 +21,8 @@ export default function Home() {
 
 const NoiseMapControls = () => {
   const {
-    noiseMapData,
-    setNoiseMapData,
+    worldData,
+    setWorldData,
     tileStyle,
     setTileStyle,
     scale,
@@ -47,7 +47,7 @@ const NoiseMapControls = () => {
     <div className="flex flex-row flex-wrap gap-3 md:gap-10 px-5 md:px-10 py-5">
       <Input
         color="primary"
-        value={noiseMapData.terrainSeed}
+        value={worldData.terrainSeed}
         size="lg"
         label="Terrain Seed"
         labelPlacement="outside"
@@ -55,7 +55,7 @@ const NoiseMapControls = () => {
         startContent={<></>}
         className="min-w-16 w-16 md:w-32"
         onChange={(e) =>
-          setNoiseMapData({ ...noiseMapData, terrainSeed: e.target.value })
+          setWorldData({ ...worldData, terrainSeed: e.target.value })
         }
       />
       <Input

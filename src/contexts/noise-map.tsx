@@ -1,13 +1,13 @@
 'use client';
 
 import { DEFAULT_NOISE_MAP_CONTEXT } from '@/constants/noise-map';
-import { NoiseMapContextType, NoiseMapDataType } from '@/types/noise-map';
+import { NoiseMapContextType, WorldDataType } from '@/types/noise-map';
 import { createContext, ReactNode, useContext, useState } from 'react';
 
 // Create the default context value
 export const defaultContextValue = {
   ...DEFAULT_NOISE_MAP_CONTEXT,
-  setNoiseMapData: () => {},
+  setWorldData: () => {},
   setTerrainLayers: () => {},
   setTileStyle: () => {},
   setScale: () => {},
@@ -24,8 +24,8 @@ export const NoiseMapContext =
 
 // NoiseMapProvider component
 const NoiseMapProvider = ({ children }: { children: ReactNode }) => {
-  const [noiseMapData, setNoiseMapData] = useState<NoiseMapDataType>(
-    DEFAULT_NOISE_MAP_CONTEXT.noiseMapData
+  const [worldData, setWorldData] = useState<WorldDataType>(
+    DEFAULT_NOISE_MAP_CONTEXT.worldData
   );
   const [terrainLayers, setTerrainLayers] = useState(
     DEFAULT_NOISE_MAP_CONTEXT.terrainLayers
@@ -51,8 +51,8 @@ const NoiseMapProvider = ({ children }: { children: ReactNode }) => {
   return (
     <NoiseMapContext.Provider
       value={{
-        noiseMapData,
-        setNoiseMapData,
+        worldData,
+        setWorldData,
         terrainLayers,
         setTerrainLayers,
         tileStyle,

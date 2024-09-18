@@ -1,7 +1,7 @@
 export const UUID_NIL = '00000000-0000-0000-0000-000000000000';
 
-// Default NoiseMapData
-export const DEFAULT_NOISE_MAP_DATA = {
+// Default WorldData
+export const DEFAULT_WORLD_DATA = {
   uuid: UUID_NIL,
   name: 'Unknown New World',
   description: 'The default null world',
@@ -35,7 +35,7 @@ export const TILE = {
 };
 
 export const DEFAULT_NOISE_MAP_CONTEXT = {
-  noiseMapData: DEFAULT_NOISE_MAP_DATA,
+  worldData: DEFAULT_WORLD_DATA,
   terrainLayers: DEFAULT_TERRAIN_LAYERS,
   tileStyle: TILE.STYLES.TERRAIN,
   scale: '3',
@@ -43,5 +43,5 @@ export const DEFAULT_NOISE_MAP_CONTEXT = {
   lacunarity: '1.001',
   octaves: '4',
   persistence: '0.5',
-  tileSize: '12',
+  tileSize: 12,
 };

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
-// Define the shape of NoiseMapData
-export type NoiseMapDataType = {
+// Define the shape of WorldData
+export type WorldDataType = {
   uuid: string;
   name: string;
   description: string;
@@ -17,8 +17,8 @@ export type NoiseMapDataType = {
 
 // Define the context type
 export type NoiseMapContextType = {
-  noiseMapData: NoiseMapDataType;
-  setNoiseMapData: React.Dispatch<React.SetStateAction<NoiseMapDataType>>;
+  worldData: WorldDataType;
+  setWorldData: React.Dispatch<React.SetStateAction<WorldDataType>>;
   terrainLayers: TerrainLayer[];
   setTerrainLayers: React.Dispatch<React.SetStateAction<TerrainLayer[]>>;
   tileStyle: string;
@@ -33,8 +33,22 @@ export type NoiseMapContextType = {
   setOctaves: React.Dispatch<React.SetStateAction<string>>;
   persistence: string;
   setPersistence: React.Dispatch<React.SetStateAction<string>>;
-  tileSize: string;
-  setTileSize: React.Dispatch<React.SetStateAction<string>>;
+  tileSize: number;
+  setTileSize: React.Dispatch<React.SetStateAction<number>>;
+};
+
+// Define the input type of createNoiseFunction
+export type NoiseOptions = {
+  amplitude?: number;
+  frequency?: number;
+  lacunarity?: number;
+  octaves?: number;
+  persistence?: number;
+};
+
+// Define the shape of NoiseMapProps for the provider component
+export type NoiseMapProps = {
+  children: ReactNode;
 };
 
 // Define the shape of TerrainLayer
@@ -44,7 +58,8 @@ export type TerrainLayer = {
   color: string;
 };
 
-// Define the shape of NoiseMapProps for the provider component
-export type NoiseMapProps = {
-  children: ReactNode;
+export type RGB = {
+  r: number;
+  g: number;
+  b: number;
 };
