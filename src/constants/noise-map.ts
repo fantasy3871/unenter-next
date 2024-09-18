@@ -1,3 +1,5 @@
+import { Orientation } from 'honeycomb-grid';
+
 export const UUID_NIL = '00000000-0000-0000-0000-000000000000';
 
 // Default WorldData
@@ -5,6 +7,7 @@ export const DEFAULT_WORLD_DATA = {
   uuid: UUID_NIL,
   name: 'Unknown New World',
   description: 'The default null world',
+  orientation: Orientation.POINTY,
   grasslandLevel: 0.5,
   waterLevel: 0.1,
   terrainSeed: '8ffed77f-64d8-46f6-a376-9d364d28c4d9',

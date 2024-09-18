@@ -5,6 +5,7 @@ export type WorldDataType = {
   uuid: string;
   name: string;
   description: string;
+  orientation: string;
   grasslandLevel: number;
   waterLevel: number;
   terrainSeed: string;
