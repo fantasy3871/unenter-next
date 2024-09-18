@@ -48,7 +48,7 @@ const NoiseMapControls = () => {
       <Input
         isDisabled
         color="primary"
-        value={worldData.terrainSeed}
+        value={worldData.terrainSeed.slice(0, 8)}
         size="lg"
         label="Terrain Seed"
         labelPlacement="outside"
