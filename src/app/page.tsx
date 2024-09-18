@@ -9,10 +9,8 @@ import NoiseMapProvider, { useNoiseMapContext } from '@/contexts/noise-map';
 export default function Home() {
   return (
     <NoiseMapProvider>
-      <div className="flex flex-col min-h-screen min-w-96">
-        <div className="flex-grow p-3">
-          <NoiseMap />
-        </div>
+      <div className="flex flex-col h-screen min-w-96">
+        <NoiseMap />
         <div className="flex flex-row flex-wrap gap-3 md:gap-10 px-5 md:px-10 py-5">
           <NoiseMapControls />
         </div>

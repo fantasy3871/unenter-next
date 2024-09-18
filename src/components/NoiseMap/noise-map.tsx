@@ -25,8 +25,8 @@ export default function NoiseMap() {
   }, []);
 
   return (
-    <div className="h-full">
-      <canvas ref={canvasRef} width={800} height={600} />
+    <div className="flex-grow m-3 overflow-hidden">
+      <canvas ref={canvasRef} style={{ width: '100%', height: '100%' }} />
     </div>
   );
 }
