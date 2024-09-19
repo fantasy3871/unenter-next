@@ -2,7 +2,6 @@
 
 import { Input, Select, SelectItem } from '@nextui-org/react';
 import { useState } from 'react';
-
 import { v4 as uuid } from 'uuid';
 
 import {
@@ -20,18 +19,28 @@ import NoiseMap from '@/components/NoiseMap/noise-map';
 import { TILE } from '@/constants/noise-map';
 import NoiseMapProvider, { useNoiseMapContext } from '@/contexts/noise-map';
 
-export default function Home() {
-  return (
-    <NoiseMapProvider>
-      <div className="flex flex-col h-screen min-w-96">
-        <NoiseMap />
-        <div className="flex flex-row flex-wrap gap-3 md:gap-10 px-5 md:px-10 py-5">
-          <NoiseMapControls />
-        </div>
-      </div>
-    </NoiseMapProvider>
-  );
-}
+const diceIcons = [
+  <></>,
+  <DiceIcon1 key={`dice-1`} />,
+  <DiceIcon2 key={`dice-2`} />,
+  <DiceIcon3 key={`dice-3`} />,
+  <DiceIcon4 key={`dice-4`} />,
+  <DiceIcon5 key={`dice-5`} />,
+  <DiceIcon6 key={`dice-6`} />,
+];
+
+const getCopyStatusIcon = (icon: string) => {
+  switch (icon) {
+    case 'check':
+      return <CheckIcon />;
+    case 'alert':
+      return <AlertIcon />;
+    default:
+      return <CopyIcon />;
+  }
+};
+
+const getDiceIcon = (diceValue: number) => diceIcons[diceValue] || <></>;
 
 const NoiseMapControls = () => {
   const {
@@ -50,24 +59,17 @@ const NoiseMapControls = () => {
     persistence,
     setPersistence,
   } = useNoiseMapContext();
-  const diceIcons = [
-    <></>,
-    <DiceIcon1 key={`dice-1`} />,
-    <DiceIcon2 key={`dice-2`} />,
-    <DiceIcon3 key={`dice-3`} />,
-    <DiceIcon4 key={`dice-4`} />,
-    <DiceIcon5 key={`dice-5`} />,
-    <DiceIcon6 key={`dice-6`} />,
-  ];
 
-  const handleChange =
-    (setter: React.Dispatch<React.SetStateAction<any>>) =>
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setter(e.target.value);
-    };
   const [icon, setIcon] = useState('copy');
   const [diceValue, setDiceValue] = useState(6);
-  const copyToClipboard = async () => {
+
+  const handleInputChange =
+    (setter: React.Dispatch<React.SetStateAction<any>>) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setter(Number(e.target.value));
+    };
+
+  const handleCopyToClipboard = async () => {
     try {
       console.log(worldData.terrainSeed);
       await navigator.clipboard.writeText(worldData.terrainSeed); // Copy to clipboard
@@ -84,24 +86,12 @@ const NoiseMapControls = () => {
     }
   };
 
-  const getCopyStatusIcon = () => {
-    switch (icon) {
-      case 'check':
-        return <CheckIcon />;
-      case 'alert':
-        return <AlertIcon />;
-      default:
-        return <CopyIcon />;
-    }
-  };
-
-  const getDiceIcon = () => diceIcons[diceValue] || <></>;
-  const generateRandomUuid = () => {
+  const handleGenerateRandomUuid = () => {
     setWorldData((prevWorldData) => ({
       ...prevWorldData,
       terrainSeed: uuid(),
     }));
-    // Update die icon
+
     let newNumber;
     do {
       newNumber = Math.floor(Math.random() * 6) + 1;
@@ -122,19 +112,19 @@ const NoiseMapControls = () => {
         startContent={
           <button
             className="cursor-pointer"
-            onClick={copyToClipboard}
+            onClick={handleCopyToClipboard}
             style={{ pointerEvents: 'auto' }} // Ensures button remains clickable
           >
-            {getCopyStatusIcon()}
+            {getCopyStatusIcon(icon)}
           </button>
         }
         endContent={
           <button
             className="cursor-pointer"
-            onClick={generateRandomUuid}
+            onClick={handleGenerateRandomUuid}
             style={{ pointerEvents: 'auto' }} // Ensures button remains clickable
           >
-            {getDiceIcon()}
+            {getDiceIcon(diceValue)}
           </button>
         }
         onChange={(e) =>
@@ -151,7 +141,7 @@ const NoiseMapControls = () => {
         labelPlacement="outside"
         variant="bordered"
         className="min-w-16 w-16 md:w-32"
-        onChange={handleChange(setScale)}
+        onChange={handleInputChange(setScale)}
       />
       <Select
         color="primary"
@@ -178,7 +168,7 @@ const NoiseMapControls = () => {
         labelPlacement="outside"
         variant="bordered"
         className="min-w-16 w-16 md:w-32"
-        onChange={handleChange(setFrequency)}
+        onChange={handleInputChange(setFrequency)}
       />
       <Input
         type="number"
@@ -189,7 +179,7 @@ const NoiseMapControls = () => {
         labelPlacement="outside"
         variant="bordered"
         className="min-w-16 w-16 md:w-32"
-        onChange={handleChange(setLacunarity)}
+        onChange={handleInputChange(setLacunarity)}
       />
       <Input
         type="number"
@@ -200,7 +190,7 @@ const NoiseMapControls = () => {
         labelPlacement="outside"
         variant="bordered"
         className="min-w-16 w-16 md:w-32"
-        onChange={handleChange(setOctaves)}
+        onChange={handleInputChange(setOctaves)}
       />
       <Input
         type="number"
@@ -211,8 +201,21 @@ const NoiseMapControls = () => {
         labelPlacement="outside"
         variant="bordered"
         className="min-w-16 w-16 md:w-32"
-        onChange={handleChange(setPersistence)}
+        onChange={handleInputChange(setPersistence)}
       />
     </div>
   );
 };
+
+export default function Home() {
+  return (
+    <NoiseMapProvider>
+      <div className="flex flex-col h-screen min-w-96">
+        <NoiseMap />
+        <div className="flex flex-row flex-wrap gap-3 md:gap-10 px-5 md:px-10 py-5">
+          <NoiseMapControls />
+        </div>
+      </div>
+    </NoiseMapProvider>
+  );
+}
