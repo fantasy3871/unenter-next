@@ -1,7 +1,21 @@
 'use client';
 
 import { Input, Select, SelectItem } from '@nextui-org/react';
+import { useState } from 'react';
 
+import { v4 as uuid } from 'uuid';
+
+import {
+  AlertIcon,
+  CheckIcon,
+  CopyIcon,
+  DiceIcon1,
+  DiceIcon2,
+  DiceIcon3,
+  DiceIcon4,
+  DiceIcon5,
+  DiceIcon6,
+} from '@/components/assets/icons';
 import NoiseMap from '@/components/NoiseMap/noise-map';
 import { TILE } from '@/constants/noise-map';
 import NoiseMapProvider, { useNoiseMapContext } from '@/contexts/noise-map';
@@ -36,12 +50,64 @@ const NoiseMapControls = () => {
     persistence,
     setPersistence,
   } = useNoiseMapContext();
+  const diceIcons = [
+    <></>,
+    <DiceIcon1 key={`dice-1`} />,
+    <DiceIcon2 key={`dice-2`} />,
+    <DiceIcon3 key={`dice-3`} />,
+    <DiceIcon4 key={`dice-4`} />,
+    <DiceIcon5 key={`dice-5`} />,
+    <DiceIcon6 key={`dice-6`} />,
+  ];
 
   const handleChange =
     (setter: React.Dispatch<React.SetStateAction<any>>) =>
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setter(e.target.value);
     };
+  const [icon, setIcon] = useState('copy');
+  const [diceValue, setDiceValue] = useState(6);
+  const copyToClipboard = async () => {
+    try {
+      console.log(worldData.terrainSeed);
+      await navigator.clipboard.writeText(worldData.terrainSeed); // Copy to clipboard
+      setIcon('check'); // Change icon to check mark
+      setTimeout(() => {
+        setIcon('copy'); // Revert back to copy icon after 1.5 seconds
+      }, 1500);
+    } catch (error) {
+      console.error('Failed to copy:', error); // Log any errors
+      setIcon('alert'); // Show alert icon in case of error
+      setTimeout(() => {
+        setIcon('copy'); // Revert back to copy icon after 3 seconds
+      }, 3000);
+    }
+  };
+
+  const getCopyStatusIcon = () => {
+    switch (icon) {
+      case 'check':
+        return <CheckIcon />;
+      case 'alert':
+        return <AlertIcon />;
+      default:
+        return <CopyIcon />;
+    }
+  };
+
+  const getDiceIcon = () => diceIcons[diceValue] || <></>;
+  const generateRandomUuid = () => {
+    setWorldData((prevWorldData) => ({
+      ...prevWorldData,
+      terrainSeed: uuid(),
+    }));
+    // Update die icon
+    let newNumber;
+    do {
+      newNumber = Math.floor(Math.random() * 6) + 1;
+    } while (newNumber === diceValue);
+    setDiceValue(newNumber);
+  };
 
   return (
     <div className="flex flex-row flex-wrap gap-3 md:gap-10 px-5 md:px-10 py-5">
@@ -53,11 +119,28 @@ const NoiseMapControls = () => {
         label="Terrain Seed"
         labelPlacement="outside"
         variant="bordered"
-        startContent={<></>}
-        className="min-w-16 w-16 md:w-32"
+        startContent={
+          <button
+            className="cursor-pointer"
+            onClick={copyToClipboard}
+            style={{ pointerEvents: 'auto' }} // Ensures button remains clickable
+          >
+            {getCopyStatusIcon()}
+          </button>
+        }
+        endContent={
+          <button
+            className="cursor-pointer"
+            onClick={generateRandomUuid}
+            style={{ pointerEvents: 'auto' }} // Ensures button remains clickable
+          >
+            {getDiceIcon()}
+          </button>
+        }
         onChange={(e) =>
           setWorldData({ ...worldData, terrainSeed: e.target.value })
         }
+        className="min-w-16 w-16 md:w-32 opacity-1"
       />
       <Input
         type="number"
