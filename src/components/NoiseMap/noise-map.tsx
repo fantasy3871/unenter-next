@@ -30,20 +30,6 @@ export default function NoiseMap() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null); // Reference for the HTML canvas element
   const gridRef = useRef<Grid<Hex> | null>(null);
 
-  const mapNoise2D = createNoiseFunction(worldData.terrainSeed, {
-    amplitude: 1,
-    frequency: frequency,
-    lacunarity: lacunarity,
-    octaves: octaves,
-    persistence: persistence,
-  });
-
-  const Tile = defineHex({
-    dimensions: tileSize,
-    origin: 'topLeft',
-    orientation: Orientation.POINTY, // Set this dynamically if needed
-  });
-
   // Function to resize the canvas to match its parent element's size
   const resizeCanvas = () => {
     const canvas = canvasRef.current;
@@ -59,6 +45,18 @@ export default function NoiseMap() {
   useEffect(() => {
     const graphics = new Graphics();
     const stageContainer = new Container();
+    const Tile = defineHex({
+      dimensions: tileSize,
+      origin: 'topLeft',
+      orientation: Orientation.POINTY, // Set this dynamically if needed
+    });
+    const mapNoise2D = createNoiseFunction(worldData.terrainSeed, {
+      amplitude: 1,
+      frequency: frequency,
+      lacunarity: lacunarity,
+      octaves: octaves,
+      persistence: persistence,
+    });
     const generateMap = (): void => {
       graphics.clear();
 
@@ -144,8 +142,6 @@ export default function NoiseMap() {
     terrainLayers,
     worldData.orientation,
     worldData.terrainSeed,
-    Tile,
-    mapNoise2D,
   ]);
 
   return (
